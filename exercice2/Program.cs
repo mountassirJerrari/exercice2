@@ -6,7 +6,8 @@
         {
             int num;
             bool b=false;
-            
+            int temp=1;
+            int temp2;
             int[] array = new int[8];
             array[0] = 1;
             array[1] = 5;
@@ -16,7 +17,7 @@
             array[5] = 122;
             
             Console.WriteLine("le tableau initial");
-            for (int i = 0; i < array.Length - 2; i++)
+            for (int i = 0; i < array.Length - 1; i++)
             {
                 Console.Write(" | " + array[i]);
             }
@@ -31,14 +32,20 @@
 
             for (int i = 0; i < 7; i++)
             {
-                if (array[i]>=num )
+                if (array[i]>num || b==true)
                 {
-                   
-                    Array.ConstrainedCopy(array, i, array, i+1, 7-i);
-                    array[i] = num;
-                    b = true;
-                    break;
                     
+                    if (!b)
+                    {
+                        temp = array[i];
+                        array[i] = num;
+                        b = true;
+                    }
+                    temp2= array[i + 1];
+                    array[i + 1] = temp;
+                    temp = temp2;
+
+
                 }
                 
             }
